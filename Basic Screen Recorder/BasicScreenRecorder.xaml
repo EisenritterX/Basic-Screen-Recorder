@@ -4,11 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Basic Screen Recorder" Height="450" Width="800">
+        Title="Basic Screen Recorder" Height="150" Width="400" Background="{x:Null}">
     <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#3F000000" Offset="1"/>
+                <GradientStop Color="#3FFFFFFF"/>
+            </RadialGradientBrush>
+        </Grid.Background>
 
         <StackPanel HorizontalAlignment="Center" Height="70"  VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button x:Name="StartRecording_Copy" Content="Start Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" FontWeight="Bold" FontSize="16" FontFamily="Arial" Padding="3" Foreground="Black" BorderBrush="#00707070" >
+            <Button x:Name="StartRecording_Copy" Content="Start Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5" FontWeight="Bold" FontSize="16" FontFamily="Arial" Padding="3" Foreground="Black" BorderBrush="#00707070" >
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Lime"/>
@@ -16,7 +22,7 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="StopRecording" Content="Stop Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" FontWeight="Bold" FontFamily="Arial" FontSize="16" Padding="3" Foreground="White" BorderBrush="#00707070" >
+            <Button x:Name="StopRecording" Content="Stop Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5" FontWeight="Bold" FontFamily="Arial" FontSize="16" Padding="3" Foreground="White" BorderBrush="#00707070" >
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red"/>
@@ -31,7 +37,14 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-
         </StackPanel>
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Label x:Name="LblTimestamp" Content="Elapsed Time:" HorizontalAlignment="Center" Margin="15,15,15,5" FontSize="16" Foreground="White" VerticalAlignment="Bottom"/>
+            <StackPanel HorizontalAlignment="Right">
+                <RadioButton x:Name="Rad30FPS" GroupName="FPSSelection" Content="30 FPS" Foreground="White" FontFamily="Arial" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center"></RadioButton>
+                <RadioButton x:Name="Rad60FPS" GroupName="FPSSelection" Content="60 FPS" Foreground="White" FontFamily="Arial" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center"></RadioButton>
+                <RadioButton x:Name="Rad120FPS" GroupName="FPSSelection" Content="120 FPS" Foreground="White" FontFamily="Arial" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center"></RadioButton>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>
