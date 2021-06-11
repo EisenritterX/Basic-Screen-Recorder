@@ -6,6 +6,32 @@
         mc:Ignorable="d"
         Title="Basic Screen Recorder" Height="450" Width="800">
     <Grid>
-        
+
+        <StackPanel HorizontalAlignment="Center" Height="70"  VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button x:Name="StartRecording_Copy" Content="Start Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" FontWeight="Bold" FontSize="16" FontFamily="Arial" Padding="3" Foreground="Black" BorderBrush="#00707070" >
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Lime"/>
+                        <GradientStop Color="#FF96FFC8" Offset="0.85"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="StopRecording" Content="Stop Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" FontWeight="Bold" FontFamily="Arial" FontSize="16" Padding="3" Foreground="White" BorderBrush="#00707070" >
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Red"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF880000" Offset="0.85"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
+
+        </StackPanel>
     </Grid>
 </Window>
