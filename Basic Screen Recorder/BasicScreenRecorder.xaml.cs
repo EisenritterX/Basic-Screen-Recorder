@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Basic_Screen_Recorder
 {
@@ -24,9 +15,48 @@ namespace Basic_Screen_Recorder
         string outputPath = "";
         string finalVideoName = "FinalVideo.mp4";
 
+        // Timer
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+
+        Stopwatch watch = new Stopwatch();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            VideoRecorder.TakeScreenshot(outputPath, CaptureMode.Window);
+
+        }
+        
+        private void StartRecording_Click(object sender, RoutedEventArgs e)
+        {
+
+            outputPath = PathSelector.PathSelection();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0,0,FPSSelection());
+            dispatcherTimer.Start();
+
+        }
+
+        private int FPSSelection()
+        {
+            if(Rad30FPS.IsChecked == true)
+            {
+                return 33;
+            }
+            if (Rad60FPS.IsChecked == true)
+            {
+                return 17;
+            }
+            if (Rad120FPS.IsChecked == true)
+            {
+                return 8;
+            }
+            return 100;
         }
     }
 }

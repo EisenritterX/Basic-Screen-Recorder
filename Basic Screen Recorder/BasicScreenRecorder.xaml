@@ -14,7 +14,7 @@
         </Grid.Background>
 
         <StackPanel HorizontalAlignment="Center" Height="70"  VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button x:Name="StartRecording_Copy" Content="Start Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5" FontWeight="Bold" FontSize="16" FontFamily="Arial" Padding="3" Foreground="Black" BorderBrush="#00707070" >
+            <Button x:Name="StartRecording" Content="Start Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5" FontWeight="Bold" FontSize="16" FontFamily="Arial" Padding="3" Foreground="Black" BorderBrush="#00707070" Click="StartRecording_Click" >
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Lime"/>
