@@ -22,7 +22,7 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="StopRecording" Content="Stop Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5" FontWeight="Bold" FontFamily="Arial" FontSize="16" Padding="3" Foreground="White" BorderBrush="#00707070" >
+            <Button x:Name="StopRecording" Content="Stop Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5" FontWeight="Bold" FontFamily="Arial" FontSize="16" Padding="3" Foreground="White" BorderBrush="#00707070" Click="StopRecording_Click" >
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red"/>

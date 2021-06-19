@@ -14,6 +14,8 @@ namespace Basic_Screen_Recorder
         bool folderSelected = false;
         string outputPath = "";
         string finalVideoName = "FinalVideo.mp4";
+        int resolutionWidth = 1024, resolutionHeight = 768;
+
 
         // Timer
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
@@ -28,7 +30,7 @@ namespace Basic_Screen_Recorder
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            VideoRecorder.TakeScreenshot(outputPath, CaptureMode.Window);
+            VideoRecorder.TakeScreenshot(outputPath, CaptureMode.Screen,1024,768);
 
         }
         
@@ -57,6 +59,12 @@ namespace Basic_Screen_Recorder
                 return 8;
             }
             return 100;
+        }
+
+        private void StopRecording_Click(object sender, RoutedEventArgs e)
+        {
+            dispatcherTimer.Stop();
+            VideoRecorder.SaveVideo(resolutionWidth, resolutionHeight, 10, outputPath);
         }
     }
 }
