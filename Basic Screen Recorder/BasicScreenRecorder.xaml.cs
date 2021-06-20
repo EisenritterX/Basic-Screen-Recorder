@@ -14,7 +14,7 @@ namespace Basic_Screen_Recorder
         bool folderSelected = false;
         string outputPath = "";
         string finalVideoName = "FinalVideo.mp4";
-        int resolutionWidth = 1024, resolutionHeight = 768;
+        int resolutionWidth = 1024, resolutionHeight = 768; //Default video resolution @1024x768
 
 
         // Timer
@@ -26,6 +26,7 @@ namespace Basic_Screen_Recorder
         public MainWindow()
         {
             InitializeComponent();
+            StopRecording.IsEnabled = false;
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -39,8 +40,9 @@ namespace Basic_Screen_Recorder
 
             outputPath = PathSelector.PathSelection();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0,0,FPSSelection());
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0,0,100); // Default interval is 100 milliseconds
             dispatcherTimer.Start();
+            StopRecording.IsEnabled = true;
 
         }
 
@@ -48,15 +50,15 @@ namespace Basic_Screen_Recorder
         {
             if(Rad30FPS.IsChecked == true)
             {
-                return 33;
+                return 30;
             }
             if (Rad60FPS.IsChecked == true)
             {
-                return 17;
+                return 60;
             }
             if (Rad120FPS.IsChecked == true)
             {
-                return 8;
+                return 120;
             }
             return 100;
         }
@@ -64,7 +66,9 @@ namespace Basic_Screen_Recorder
         private void StopRecording_Click(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
-            VideoRecorder.SaveVideo(resolutionWidth, resolutionHeight, 10, outputPath);
+            VideoRecorder.SaveVideo(resolutionWidth, resolutionHeight, FPSSelection(), outputPath);
+            AudioRecorder.SaveAudio(outputPath);
+
         }
     }
 }
